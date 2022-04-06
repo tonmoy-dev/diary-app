@@ -1,20 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
+import Note from "./Note";
 
 const Diary = () => {
     const [notes, setNotes] = useState([]);
-    const [isEditing, setEditing] = useState(false);
     const newNoteRef = useRef(null);
+    const updateNoteRef = useRef(null);
+
+    // collect notes from localStorage
     const getNotesFromStorage = () => JSON.parse(localStorage.getItem('notes'));
+
+    // save notes to localStorage
     const addNotesToStorage = (notes) => localStorage.setItem("notes", JSON.stringify(notes))
+    
+    // load all notes
     useEffect(() => {
         const getNotes = getNotesFromStorage();
         if (getNotes) {
             setNotes(getNotes);
         }
     }, []);
+
+    // write and add note
     const addNote = () => {
         const note = {
-            // id: newNoteRef.current.value.length,
             text: newNoteRef.current.value,
         }
         const storeNotes = [note, ...notes];
@@ -22,19 +30,21 @@ const Diary = () => {
         newNoteRef.current.value = "";
         addNotesToStorage(storeNotes);
     }
-    const editNote = () => setEditing(true)
+
+    // remove a single note
     const removeNote = (text) => {
         const filteredNotes = notes.filter(note => note.text !== text);
         setNotes(filteredNotes);
         addNotesToStorage(filteredNotes);
     }
-    const cancelToEdit = () => setEditing(false);
+
+    // update or edit a single note
     const updateNote = (text) => {
-        notes.find(note => note.text === text && (note.text = newNoteRef.current.value, true));
+        notes.find(note => note.text === text && (note.text = updateNoteRef.current.value, true));
         addNotesToStorage(notes);
-        setEditing(false);
-        newNoteRef.current.value = "";
+        updateNoteRef.current.value = "";
     }
+
     return (
         <div>
             <input type="text" placeholder="Write your note here" ref={newNoteRef} />
@@ -42,29 +52,7 @@ const Diary = () => {
             <div>
                 {
                     notes.map((note) =>
-                        (
-                            <div key={note.text}>
-                                {
-                                    !isEditing && (
-                                        <div>
-                                            <p>{note.text}</p>
-                                            <button onClick={editNote}>Edit</button>
-                                            <button onClick={() => removeNote(note.text)}>Delete</button>
-                                        </div>
-                                    )
-                                }
-                                {
-                                    isEditing && (
-                                        <div>
-                                            <input type="text" placeholder="Write your note here" ref={newNoteRef} />
-                                            <button onClick={cancelToEdit}>Cancel</button>
-                                            <button onClick={() => updateNote(note.text)}>Save</button>
-                                        </div>
-                                    )
-                            
-                                }
-                            </div>
-                            )
+                        <Note key={note.text} note={note} removeNote={removeNote} updateNote={updateNote} updateNoteRef={updateNoteRef} />
                     )
                 }
             </div>
