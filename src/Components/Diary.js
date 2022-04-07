@@ -176,7 +176,7 @@ const Diary = () => {
                                     )
                                 ) : (
                                     <div className="empty-note-box">
-                                        <p>Please add more notes. Notes are unavailable here.</p>
+                                        <p>Please add notes to your diary.</p>
                                     </div>
                                 )
                             ) : (
@@ -186,7 +186,7 @@ const Diary = () => {
                                         <Note key={note.title} note={note} removeNote={removeNote} updateNote={updateNote} updateNoteRef={updateNoteRef} />)
                                 ) : (
                                     <div className="empty-note-box">
-                                        <p>Please add more notes. Notes are unavailable here.</p>
+                                        <p>Please add more notes.</p>
                                     </div>
                                 )
                             )
