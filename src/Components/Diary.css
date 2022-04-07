@@ -1,0 +1,63 @@
+.container{
+    /* width: 30%; */
+    /* margin: 0 auto; */
+    padding: 20px;
+}
+.card {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid rgba(221, 221, 221, 0.671);
+    transition: 0.3s;
+  }
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+.diary-container{
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 20px;
+}
+.diary-title{
+    margin: 30px 0 10px 0;
+}
+.diary-content{
+    width: 100%;
+    padding: 0 20px;
+}
+.diary-content > div{
+    display: flex;
+    gap: 10px;
+}
+.diary-content input,textarea {
+    width: 100%;
+}
+.add-diary-btn{
+    background-color: green;
+}
+.notes-container{
+    border: 1px solid rgba(221, 221, 221, 0.671);
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+}
+.filters-container{
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px 10px;
+    border-radius: 5px;
+}
+.filter-box{
+    display: flex;
+    gap: 10px;
+}
+.filter-box button{
+    background-color: teal;
+}
+.filter-box button, select{
+    width: 50%;
+}
+
+.empty-note-box{
+    margin: 50px 0;
+    text-align: center;
+
+}

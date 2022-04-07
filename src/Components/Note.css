@@ -1,0 +1,38 @@
+.note-container{
+    padding: 10px;
+    
+}
+.note-box{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+.note-info{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.note-date{
+    font-size: 14px;
+}
+.note-details{
+    width: 100%;
+    text-align: left;
+    padding: 20px 0;
+}
+.edit-btn{
+    background-color: teal;
+    margin-right: 10px;
+}
+.delete-btn{
+    background-color: tomato;
+}
+.save-btn{
+    background-color: green;
+}
+.cancel-btn{
+    background-color: black;
+    margin-right: 10px;
+}
